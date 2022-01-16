@@ -1,0 +1,98 @@
+.story {
+  background-color: rgba($color-white, .60);
+  width: 75%;
+  margin: 0 auto;
+  box-shadow: 0 3rem 6rem rgba($shadow, .15);
+  border-radius: 3px;
+  padding: 6rem;
+  padding-left: 9rem;
+  font-size: $font-size-default;
+  transform: skewX(-12deg);
+  // perspective: 150rem;
+
+  @include respond(tablet) {
+    width: 100%;
+    padding: 4rem;
+    padding-left: 7rem;
+  }
+
+  @include respond(phone) {
+    transform: skewX(0);
+  }
+
+  &__shape {
+    width: 15rem;
+    height: 15rem;
+    float: left;
+    // need to float if you want text to round around
+    // background-color: orangered;
+    transform: translateX(-3rem) skewX(12.01deg);
+    position: relative;
+    overflow: hidden;
+    border-radius: 100rem;
+    backface-visibility: hidden;
+
+    // some properties not support from old browser so we need to use @supports to change properties values
+    @supports(clip-path:polygon(0 0)) or (-webkit-clip-path:polygon(0 0)) {
+      -webkit-clip-path: circle(50% at 50% 50%);
+      clip-path: circle(50% at 50% 50%);
+      -webkit-shape-outside: circle(50% at 50% 50%);
+      shape-outside: circle(50% at 50% 50%);
+      border-radius:0;
+
+    }
+
+    @include respond(phone) {
+      transform: translateX(-3rem) skewX(0);
+    }
+
+  }
+
+  &__img {
+    height: 100%;
+    transform: translateX(-3rem) scale(1.4);
+    transition: all .3s ease-in-out;
+    // backface-visibility: hidden;
+    // overflow: hidden;
+
+
+
+  }
+
+  &__text {
+    transform: skewX(12deg);
+    backface-visibility: hidden;
+
+    @include respond(phone) {
+      transform: skewX(0);
+    }
+  }
+
+  &__caption {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 20%);
+    color: $color-white;
+    text-transform: uppercase;
+    font-size: 1.7rem;
+    text-align: center;
+    opacity: 0;
+    transition: all .5s;
+    // backface-visibility: hidden;
+  }
+
+  &:hover &__caption {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+
+
+  }
+
+  &:hover &__img {
+    filter: blur(3px) brightness(80%);
+    transform: translateX(-3rem) scale(1) rotate(0.1deg);
+    // backface-visibility: hidden;
+
+  }
+}

@@ -1,0 +1,171 @@
+.popup {
+
+  height: 100vh;
+  width: 100%;
+  padding: 25rem 0;
+  position: fixed;
+  // need to specify position
+  top: 0;
+  left: 0;
+  z-index: 4000;
+
+  opacity: 0;
+  visibility: hidden;
+  transition: all .4s;
+  background-color: rgba($color-black, .8);
+
+  // in case some browser support this property
+  @supports(backdrop-filter:blur(10px)) or (-webkit-backdrop-filter: blur(10px)) {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    background-color: rgba($color-black, .4);
+
+  }
+
+ 
+
+  // @media only screen and (max-width:64rem){
+   
+  // }
+ 
+
+
+
+
+  &_close {
+
+    &:link,
+    &:visited {
+      text-decoration: none;
+      color: $color-grey-dark;
+      position: absolute;
+      top: 2.5rem;
+      right: 2.5rem;
+      font-size: 3rem;
+      display: inline-block;
+      transition: all .3s;
+      line-height: 1;
+
+      @include respond(tablet) {
+        color: $color-white;
+        font-size: 4rem;
+      }
+    }
+
+    &:hover {
+      color: $color-primary;
+    }
+  }
+
+  &_btn{
+    text-align: center;
+  }
+
+  &_content {
+    @include abCenter;
+    width: 75%;
+    // position: fixed;
+    background-color: $color-white;
+    box-shadow: 0 2rem 4rem rgba($color-black, .2);
+    border-radius: 3px;
+    display: table;
+    overflow: hidden;
+
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(.2);
+    transition: all .4s .2s;
+
+
+    // @media only screen and(max-width:65rem){
+    //   width: 70%;
+    //   height: 70%;
+    //   display: block;
+    //   overflow-y: scroll;
+    // }
+
+   
+    @include respond(tablet) {
+      width: 70%;
+      height: 70%;
+      display: block;
+      overflow-y: scroll;
+      // object-fit: cover;
+    }
+  
+
+  }
+
+
+  &:target {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  &:target &_content {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  &_left {
+    width: 33.333333%;
+    display: table-cell;
+    overflow: hidden;
+
+
+    // @media only screen and (max-width:65rem){
+    //   width: 100%;
+    //   display: block;
+    // }
+
+    @include respond(phone) {
+      width: 100%;
+      display: block;
+    }
+ 
+  }
+
+  &_right {
+    width: 66.6666667%;
+
+    display: table-cell;
+    vertical-align: middle;
+    padding: 1.8rem 5rem;
+
+
+    // @media only screen and (max-width:65rem){
+    //   width: 100%;
+    //   display: block;
+    // }
+
+    @include respond(tablet) {
+      width: 100%;
+      display: block;
+    }
+
+ 
+  }
+
+  &_img {
+    display: block;
+    width: 100%;
+  }
+
+  &_text {
+    font-size: 1.4rem;
+    // line-height: 1.6;
+    margin-bottom: 2.25rem;
+
+    column-count: 2;
+    column-gap: 4rem;
+    column-rule: 1px solid $color-grey-light-1;
+
+    hyphens: auto;
+
+
+    @include respond(phone) {
+      column-count: unset;
+    }
+  }
+
+
+}

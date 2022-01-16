@@ -1,0 +1,68 @@
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: inherit;
+}
+
+*:focus {
+  outline: none;
+  box-shadow: 0 0 0 0.8rem rgba($color-primary, .5);
+}
+
+html {
+  font-size: 62.5%; //1rem = 16  10px/16 = 62.5%
+
+
+  //always larger one before smaller one for viewport
+
+
+  @include respond(tablet_landscape) {
+    font-size: 56.25%;
+  }
+
+  @include respond(tablet) {
+    font-size: 50%;
+  }
+
+  @include respond(small_tablet) {
+    font-size: 43.75%;
+  }
+
+  // @include respond(phone){
+  //   font-size: 30%;
+  // }
+
+  @include respond(phone) {
+    overflow-x: hidden;
+    font-size: 44%;
+  }
+
+  @include respond(big_desktop) {
+    font-size: 75%;
+  }
+
+
+
+
+}
+
+body {
+  box-sizing: border-box;
+  padding: 3rem;
+  // font-weight: 500;
+
+  @include respond (tablet) {
+    padding: 0;
+  }
+
+  @include respond(phone) {
+    overflow-x: hidden;
+  }
+}
+
+::selection{
+  background-color: $color-primary;
+  color: $color-white;
+}

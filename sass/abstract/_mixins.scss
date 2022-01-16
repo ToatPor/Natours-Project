@@ -1,0 +1,59 @@
+@mixin clearfix {
+  &::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+@mixin abCenter {
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+}
+
+/* 
+ -phone 0-600px 600/16 = 38 rem calculate rem
+ -tablet 600-900px
+ -tablet-landscape 900-1200px
+ -desktop 1200-1800px  normal style
+ -big-desktop var 1800px+ */ 
+
+
+
+// @content mean content that we deiseign for css
+@mixin respond ($breakpoint) {
+
+
+
+  @if $breakpoint==tablet {
+    @media only screen and (max-width: 56.25em) {
+      @content;
+    }
+  }
+
+  @if $breakpoint==tablet_landscape {
+    @media only screen and (max-width: 75em) {
+      @content;
+    }
+  }
+
+  
+  @if $breakpoint==phone {
+    @media only screen and  (max-width: 38em) { 
+      @content;
+    }
+  }
+
+  @if $breakpoint==big_desktop {
+    @media only screen and  (min-width: 113em) {
+      @content;
+    }
+  }
+
+
+
+}
